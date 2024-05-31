@@ -17,8 +17,10 @@
     "vite-node": "^1.6.0"
   },
   "dependencies": {
+    "@langchain/community": "^0.2.4",
     "@langchain/core": "^0.2.5",
     "@langchain/openai": "^0.1.0",
+    "cheerio": "1.0.0-rc.12",
     "langchain": "^0.2.4"
   }
 }
