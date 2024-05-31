@@ -11,6 +11,9 @@ importers:
       '@langchain/core':
         specifier: ^0.2.5
         version: 0.2.5(langchain@0.2.4(openai@4.47.3))(openai@4.47.3)
+      '@langchain/openai':
+        specifier: ^0.1.0
+        version: 0.1.0(langchain@0.2.4(openai@4.47.3))
       langchain:
         specifier: ^0.2.4
         version: 0.2.4(openai@4.47.3)
