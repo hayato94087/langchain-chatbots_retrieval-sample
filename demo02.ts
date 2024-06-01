@@ -23,5 +23,9 @@ const vectorstore = await MemoryVectorStore.fromDocuments(
 );
 
 const retriever = vectorstore.asRetriever(2);
+
 const docs = await retriever.invoke("LangChainのライセンス形式は？");
 console.log(docs);
+
+const docs2 = await retriever.invoke("LangChainがサポートするプログラミング言語は？");
+console.log(docs2);
