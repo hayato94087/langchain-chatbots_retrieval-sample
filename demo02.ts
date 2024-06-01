@@ -5,7 +5,7 @@ import { OpenAIEmbeddings } from "@langchain/openai";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 
 const loader = new CheerioWebBaseLoader(
-  "https://docs.smith.langchain.com/user_guide"
+  "https://ja.wikipedia.org/wiki/LangChain"
 );
 const rawDocs = await loader.load();
 console.log(rawDocs);
@@ -22,6 +22,6 @@ const vectorstore = await MemoryVectorStore.fromDocuments(
   new OpenAIEmbeddings()
 );
 
-const retriever = vectorstore.asRetriever(3);
-const docs = await retriever.invoke("how can langsmith help with testing?");
+const retriever = vectorstore.asRetriever(2);
+const docs = await retriever.invoke("LangChainのライセンス形式は？");
 console.log(docs);
