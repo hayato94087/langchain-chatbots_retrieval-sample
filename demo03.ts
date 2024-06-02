@@ -9,7 +9,7 @@ import {
   MessagesPlaceholder,
 } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
-import { HumanMessage, AIMessage } from "@langchain/core/messages";
+import { HumanMessage } from "@langchain/core/messages";
 
 const llm = new ChatOpenAI({
   model: "gpt-3.5-turbo",
@@ -35,7 +35,15 @@ const vectorstore = await MemoryVectorStore.fromDocuments(
 const retriever = vectorstore.asRetriever(3);
 const docs = await retriever.invoke("ライセンス形式は？");
 
-const SYSTEM_TEMPLATE = `ユーザーの質問に、以下の「コンテキスト」に基づいて回答してください。「コンテキスト」に質問に関連する情報が含まれていない場合は、何かを作り出さずに「わかりません」とだけ答えてください。「コンテキスト」は<context>と</context>の間に含まれている文章です。":
+const SYSTEM_TEMPLATE = `# 指示
+以下の質問に回答してください。質問に対する情報がコンテキストによって提供されない場合、または明確な情報源が存在しない場合は、『わかりません』とだけ回答してください。推測や創作はしないでください。
+
+質問に対する情報が見つからない場合、必ず『わかりません』と回答してください。例えば、以下の質問に対してコンテキストに情報が含まれない場合です。
+
+質問：「少年ジャンプで掲載されていた『ナルト』について教えて
+
+# コンテキスト
+{context}
 
 <context>
 {context}
@@ -54,7 +62,7 @@ const documentChain = await createStuffDocumentsChain({
 
 const result = await documentChain.invoke({
   messages: [new HumanMessage("LangChainのライセンス形式は？")],
-  context: docs,  
+  context: docs,
 });
 console.log(result);
 
