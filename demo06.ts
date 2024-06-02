@@ -159,11 +159,11 @@ const result6 = await conversationalRetrievalChain.invoke({
 
 const stream = await conversationalRetrievalChain.stream({
   messages: [
-    new HumanMessage("Can LangSmith help test my LLM applications?"),
+    new HumanMessage("LangChainのライセンス形式は？"),
     new AIMessage(
-      "Yes, LangSmith can help test and evaluate your LLM applications. It allows you to quickly edit examples and add them to datasets to expand the surface area of your evaluation sets or to fine-tune a model for improved quality or reduced costs. Additionally, LangSmith can be used to monitor your application, log all traces, visualize latency and token usage statistics, and troubleshoot specific issues as they arise."
+      "LangChainのライセンス形式はMITライセンスです。"
     ),
-    new HumanMessage("Tell me more!"),
+    new HumanMessage("もっと教えて"),
   ],
 });
 
