@@ -89,12 +89,12 @@ const retrievalChain = RunnablePassthrough.assign({
 const result = await retrievalChain.invoke({
   messages: [new HumanMessage("LangChainのライセンス形式は？")],
 });
-// console.log(result)
+console.log(result)
 
 const result2 = await retrievalChain.invoke({
   messages: [new HumanMessage("もっと教えて")],
 });
-// console.log(result2);
+console.log(result2);
 
 const queryTransformPrompt = ChatPromptTemplate.fromMessages([
   new MessagesPlaceholder("messages"),
@@ -113,7 +113,7 @@ const result3 = await queryTransformationChain.invoke({
     new HumanMessage("もっと教えて"),
   ],
 });
-// console.log(result3)
+console.log(result3)
 
 const queryTransformingRetrieverChain = RunnableBranch.from([
   [
@@ -132,7 +132,7 @@ const conversationalRetrievalChain = RunnablePassthrough.assign({
 const result4 = await conversationalRetrievalChain.invoke({
   messages: [new HumanMessage("LangChainのライセンス形式は？")],
 });
-// console.log(result4)
+console.log(result4)
 
 const result5 = await conversationalRetrievalChain.invoke({
   messages: [
